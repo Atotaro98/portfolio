@@ -9,11 +9,24 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Skills from "./components/Skills";
 import Work from "./components/Work";
+import config from "./data/config.json";
 import dataEN from "./data/dataEN.json";
 import dataES from "./data/dataES.json";
 function App() {
   const [language, setLanguage] = React.useState("en");
   const [data, setData] = React.useState(dataEN);
+  const [offset, setOffset] = React.useState(0);
+
+  const [achievements, setAchievements] = React.useState({
+    home: false,
+    about: false,
+    skills: false,
+    works: false,
+    contact: false,
+    changeLanguage: false,
+    openLinkedin: false,
+    openGithub: false,
+  });
 
   React.useEffect(() => {
     if (language === "es") {
@@ -51,31 +64,113 @@ function App() {
   // You can also pass an optional settings object
   // below listed default settings
 
-  Toastify({
-    text: `Logro Desbloqueado 🎉  ¡Gracias por tu ayuda!`,
-    duration: -1,
-    close: true,
-    gravity: "top", // `top` or `bottom`
-    position: "center", // `left`, `center` or `right`
-    stopOnFocus: true, // Prevents dismissing of toast on hover
-    style: {
-      background:
-        "linear-gradient(to right, rgba(112, 157, 255, 0.8), hsla(242, 74%, 61%, 0.8))",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+  React.useEffect(() => {
+    const onScroll = () => setOffset(window.pageYOffset);
+    // clean up code
+    window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  React.useEffect(() => {
+    const { Scroll } = config;
+    if (offset >= Scroll.home && achievements.home === false) {
+      setAchievements({
+        ...achievements,
+        home: true,
+      });
+      achievementAlert(data.App.unlock_achievement_home);
+    }
+    if (offset >= Scroll.about && achievements.about === false) {
+      setAchievements({
+        ...achievements,
+        about: true,
+      });
+      achievementAlert(data.App.unlock_achievement_about);
+    }
+    if (offset >= Scroll.skills && achievements.skills === false) {
+      setAchievements({
+        ...achievements,
+        skills: true,
+      });
+      achievementAlert(data.App.unlock_achievement_skills);
+    }
+    if (offset >= Scroll.works && achievements.works === false) {
+      setAchievements({
+        ...achievements,
+        works: true,
+      });
+      achievementAlert(data.App.unlock_achievement_works);
+    }
+    if (offset >= Scroll.contact && achievements.contact === false) {
+      setAchievements({
+        ...achievements,
+        contact: true,
+      });
+      achievementAlert(data.App.unlock_achievement_contact);
+    }
+  }, [offset, achievements]);
+  const achievementAlert = React.useCallback(
+    (title) => {
+      Toastify({
+        text: `${data.App.text_achievement_unlocked} -  ${title}`,
+        duration: 4000,
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background:
+            "linear-gradient(to right, rgba(112, 157, 255, 0.8), hsla(242, 74%, 61%, 0.8))",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        },
+        onClick: function () {}, // Callback after click
+      }).showToast();
     },
-    onClick: function () {}, // Callback after click
-  });
+    [data.App.text_achievement_unlocked]
+  );
 
   return (
     <>
-      <Navbar data={data} changeLanguage={changeLanguage} />
-      <Home data={data} />
-      <About data={data} />
-      <Skills data={data} />
-      <Work data={data} />
-      <Contact data={data} />
+      <Navbar
+        data={data}
+        achievements={achievements}
+        setAchievements={setAchievements}
+        changeLanguage={changeLanguage}
+        achievementAlert={achievementAlert}
+      />
+      <Home
+        data={data}
+        achievements={achievements}
+        setAchievements={setAchievements}
+        achievementAlert={achievementAlert}
+      />
+      <About
+        data={data}
+        achievements={achievements}
+        setAchievements={setAchievements}
+        achievementAlert={achievementAlert}
+      />
+      <Skills
+        data={data}
+        achievements={achievements}
+        setAchievements={setAchievements}
+        achievementAlert={achievementAlert}
+      />
+      <Work
+        data={data}
+        achievements={achievements}
+        setAchievements={setAchievements}
+        achievementAlert={achievementAlert}
+      />
+      <Contact
+        data={data}
+        achievements={achievements}
+        setAchievements={setAchievements}
+        achievementAlert={achievementAlert}
+      />
     </>
   );
 }

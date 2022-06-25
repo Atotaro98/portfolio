@@ -1,15 +1,28 @@
 {
+  "App": {
+    "text_achievement_unlocked": "Logro desbloqueado",
+    "text_achievement_locked": "Logro bloqueado",
+    "unlock_achievement_home": "Ver la Home",
+    "unlock_achievement_about": "Ver Sobre Mi",
+    "unlock_achievement_skills": "Ver Habilidades",
+    "unlock_achievement_works": "Ver Trabajos",
+    "unlock_achievement_contact": "Ver Contacto",
+    "unlock_achievement_changeLanguage": "Change Language",
+    "unlock_achievement_openLinkedin": "Abrir Linkedin",
+    "unlock_achievement_openGithub": "Abrir Github"
+  },
   "NavBar": {
     "link_1": "Inicio",
     "link_2": "Sobre Mi",
-    "link_3": "Conocimientos",
+    "link_3": "Habilidades",
     "link_4": "Trabajos",
     "link_5": "Contacto",
     "text_language": "EN",
     "cv": "Curriculum",
     "refLinkedin": "https://www.linkedin.com/in/alejo-totaro/",
     "refGithub": "https://github.com/Atotaro98",
-    "refCv": ""
+    "refCv": "",
+    "text_achievements": "Logros"
   },
   "Home": {
     "text_1": "Hola, mi nombre es",
@@ -24,7 +37,7 @@
     "text_3": "Me apasiona crear software excelente que mejore la vida de los que me rodean. Me especializo en la creación de software para clientes que van desde particulares y pequeñas empresas hasta grandes corporaciones. ¿Qué harías si tuvieras un experto en software a tu alcance?"
   },
   "Skills": {
-    "text_1": "Conocimientos"
+    "text_1": "Habilidades"
   },
   "Work": {
     "text_1": "Trabajos"

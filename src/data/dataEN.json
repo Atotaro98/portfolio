@@ -1,4 +1,16 @@
 {
+  "App": {
+    "text_achievement_unlocked": "Achievement unlocked",
+    "text_achievement_locked": "Achievement locked",
+    "unlock_achievement_home": "View Home",
+    "unlock_achievement_about": "View About",
+    "unlock_achievement_skills": "View Skills",
+    "unlock_achievement_works": "View Works",
+    "unlock_achievement_contact": "View Contact",
+    "unlock_achievement_changeLanguage": "Cambiar Lenguaje",
+    "unlock_achievement_openLinkedin": "View Linkedin",
+    "unlock_achievement_openGithub": "View Github"
+  },
   "NavBar": {
     "link_1": "Home",
     "link_2": "About Me",
@@ -9,7 +21,8 @@
     "cv": "Resume",
     "refLinkedin": "https://www.linkedin.com/in/alejo-totaro/",
     "refGithub": "https://github.com/Atotaro98",
-    "refCv": ""
+    "refCv": "",
+    "text_achievements": "ACHV"
   },
   "Home": {
     "text_1": "Hi, my name is",

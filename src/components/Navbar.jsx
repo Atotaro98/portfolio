@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { FaBars, FaGithub, FaLinkedin, FaTimes } from "react-icons/fa";
+import {
+  FaBars,
+  FaGithub,
+  FaLinkedin,
+  FaTimes,
+  FaTrophy,
+} from "react-icons/fa";
 
 import { BsFillPersonLinesFill } from "react-icons/bs";
 import { Link } from "react-scroll";
@@ -8,8 +14,25 @@ import Logo from "../assets/logo.png";
 const Navbar = (props) => {
   const [nav, setNav] = useState(false);
   const handleClick = () => setNav(!nav);
-  const { data, changeLanguage } = props;
+  const {
+    data,
+    achievements,
+    setAchievements,
+    changeLanguage,
+    achievementAlert,
+  } = props;
   const NavBarData = data.NavBar;
+
+  const handleChangeLanguage = () => {
+    changeLanguage();
+    if (achievements.changeLanguage === false) {
+      setAchievements({
+        ...achievements,
+        changeLanguage: true,
+      });
+      achievementAlert(data.App.unlock_achievement_changeLanguage);
+    }
+  };
   return (
     <div className="fixed w-full h-[80px] flex justify-between items-center px-4 bg-[#0a192f] text-gray-300">
       <div>
@@ -49,7 +72,7 @@ const Navbar = (props) => {
           </Link>
         </li>
         <li className="hover:bg-pink-600 hover:transition ease-in-out delay-50">
-          <button onClick={changeLanguage} smooth={true} duration={500}>
+          <button onClick={handleChangeLanguage} smooth={true} duration={500}>
             {NavBarData.text_language}
           </button>
         </li>
@@ -134,6 +157,14 @@ const Navbar = (props) => {
             >
               {NavBarData.cv} <BsFillPersonLinesFill size={30} />
             </a>
+          </li>
+          <li className="w-[160px] h-[60px] flex justify-between items-center ml-[-100px] hover:ml-[-10px] duration-300 bg-amber-500">
+            <p
+              className="flex justify-between items-center w-full text-gray-300"
+              onClick={() => console.log("OPEN LOGROS")}
+            >
+              {NavBarData.text_achievements} <FaTrophy size={30} />
+            </p>
           </li>
         </ul>
       </div>
