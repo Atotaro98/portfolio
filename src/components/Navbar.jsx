@@ -30,7 +30,11 @@ const Navbar = (props) => {
         ...achievements,
         changeLanguage: true,
       });
-      achievementAlert(data.App.unlock_achievement_changeLanguage);
+      // second params if because if user change language data.App dont change.
+      achievementAlert(
+        data.App.unlock_achievement_changeLanguage,
+        "Logro desbloqueado"
+      );
     }
   };
   return (
@@ -72,7 +76,7 @@ const Navbar = (props) => {
           </Link>
         </li>
         <li className="hover:bg-pink-600 hover:transition ease-in-out delay-50">
-          <button onClick={handleChangeLanguage} smooth={true} duration={500}>
+          <button onClick={handleChangeLanguage}>
             {NavBarData.text_language}
           </button>
         </li>
@@ -121,9 +125,7 @@ const Navbar = (props) => {
           </Link>
         </li>
         <li className="py-6 text-4xl">
-          <button onClick={changeLanguage} smooth={true} duration={500}>
-            {NavBarData.text_language}
-          </button>
+          <button onClick={changeLanguage}>{NavBarData.text_language}</button>
         </li>
       </ul>
 

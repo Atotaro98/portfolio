@@ -44,6 +44,10 @@
   },
 
   "Contact": {
-    "text_1": "Contact"
+    "text_1": "Contact",
+    "placeholder_1": "Name",
+    "placeholder_2": "Email",
+    "placeholder_3": "Message",
+    "text_2": "Let's Collaborate"
   }
 }

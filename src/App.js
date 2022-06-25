@@ -7,6 +7,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
+import PopUp from "./components/PopUp";
 import Skills from "./components/Skills";
 import Work from "./components/Work";
 import config from "./data/config.json";
@@ -28,19 +29,13 @@ function App() {
     openGithub: false,
   });
 
-  React.useEffect(() => {
-    if (language === "es") {
-      setData(dataES);
-    } else {
-      setData(dataEN);
-    }
-  }, [language]);
-
   const changeLanguage = React.useCallback(() => {
     if (language === "es") {
       setLanguage("en");
+      setData(dataEN);
     } else {
       setLanguage("es");
+      setData(dataES);
     }
   }, [language]);
 
@@ -111,9 +106,11 @@ function App() {
     }
   }, [offset, achievements]);
   const achievementAlert = React.useCallback(
-    (title) => {
+    (title, unlocked) => {
       Toastify({
-        text: `${data.App.text_achievement_unlocked} -  ${title}`,
+        text: `${
+          unlocked ? unlocked : data.App.text_achievement_unlocked
+        } -  ${title}`,
         duration: 4000,
         close: true,
         gravity: "top", // `top` or `bottom`
@@ -134,6 +131,7 @@ function App() {
 
   return (
     <>
+      <PopUp />
       <Navbar
         data={data}
         achievements={achievements}
