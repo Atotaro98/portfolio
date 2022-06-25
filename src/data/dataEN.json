@@ -1,0 +1,36 @@
+{
+  "NavBar": {
+    "link_1": "Home",
+    "link_2": "About Me",
+    "link_3": "Skills",
+    "link_4": "Works",
+    "link_5": "Contact",
+    "text_language": "ES",
+    "cv": "Resume",
+    "refLinkedin": "https://www.linkedin.com/in/alejo-totaro/",
+    "refGithub": "https://github.com/Atotaro98",
+    "refCv": ""
+  },
+  "Home": {
+    "text_1": "Hi, my name is",
+    "text_2": "Alejo Totaro Barbieri",
+    "text_3": "I'm a Full Stack Developer.",
+    "text_4": "I’m a full-stack developer specializing in building (and occasionallydesigning) exceptional digital experiences. Currently, I’m focused onbuilding responsive full-stack web applications.",
+    "text_5": "View Work"
+  },
+  "About": {
+    "text_1": "About",
+    "text_2": "Hi. I'm Alejo, nice to meet you. Please take a look around.",
+    "text_3": "I am passionate about building excellent software that improvesthe lives of those around me. I specialize in creating software for clients ranging from individuals and small-businesses all theway to large enterprise corporations. What would you do if you had a software expert available at your fingertips?"
+  },
+  "Skills": {
+    "text_1": "Skills"
+  },
+  "Work": {
+    "text_1": "Works"
+  },
+
+  "Contact": {
+    "text_1": "Contact"
+  }
+}
